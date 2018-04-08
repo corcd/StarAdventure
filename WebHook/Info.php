@@ -22,6 +22,7 @@ function getLangString($codeNum){
 function rep($codeNum){
     $tmpString = "";
     switch ($codeNum) {
+            case 0: $tmpString ="那就让我们开始训练吧，请跟我读：";break;
             case 11: $tmpString ="答对啦，好棒！";break;
             case 22: $tmpString ="好可惜答错了，没关系，下次继续努力";break;
     }

@@ -20,18 +20,23 @@
     }
 
     // Content Nexus
-    if($originalValue_ans === Lesson_Poem1($originalValue_num)){
-        $reply = rep(11);
+    if($originalValue_ans === "" && $originalValue_num === ""){
+        $reply = rep(0);
     }
     else{
-        $reply = rep(22);
+        if($originalValue_ans === Lesson_Poem1($originalValue_num)){
+            $reply = rep(11);
+        }
+        else{
+            $reply = rep(22);
+        }
     }
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
-        $returnValue->reply= $reply;
+        $returnValue->reply= $reply+Lesson_Poem1(rand(0,2));
         $returnValue->resultType= "RESULT";
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
