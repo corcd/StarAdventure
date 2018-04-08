@@ -9,10 +9,11 @@
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName']=== 'content'){
             $original = $v['originalValue'];
-            $reply = $original;
+            //$reply = $original;
             break;
         }
     }
+    $reply = "hello!";
     // Content Nexus
 
 	// Echo Result for Aligenie
@@ -21,9 +22,9 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "RESULT";
+        $resultValue->executeCode="SUCCESS";
+        $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
-    $resultObj->executeCode="SUCCESS";
-    $resultObj->msgInfo="";
     $resultJSON = json_encode($resultObj);
     echo $resultJSON;
 ?>
