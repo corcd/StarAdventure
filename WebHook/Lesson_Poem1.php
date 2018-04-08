@@ -6,23 +6,25 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
-    $originalValue = "";
+    $originalValue_ans = "";
+    $originalValue_num = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'content'){
-            $originalValue = $v['originalValue'];
+        if ($v['intentParameterName'] === 'answer'){
+            $originalValue_ans = $v['originalValue'];
+            break;
+        }
+        else if ($v['intentParameterName'] === 'number'){
+            $originalValue_num = $v['originalValue'];
             break;
         }
     }
 
     // Content Nexus
-    if($originalValue === "英语"){
-        $reply = getContentString(0);
+    if($originalValue_ans === Lesson_Poem1($originalValue_num)){
+        $reply = rep(11);
     }
-    else if($originalValue === "语文"){
-        $reply = getContentString(1);
-    }
-    else if($originalValue === "数学"){
-        $reply = getContentString(2);
+    else{
+        $reply = rep(22);
     }
 
 	// Echo Result to Aligenie

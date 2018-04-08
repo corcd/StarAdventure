@@ -8,21 +8,21 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'content'){
+        if ($v['intentParameterName'] === 'lang_content'){
             $originalValue = $v['originalValue'];
             break;
         }
     }
 
     // Content Nexus
-    if($originalValue === "英语"){
-        $reply = getContentString(0);
+    if($originalValue === "古诗词"){
+        $reply = getLangString(0);
     }
-    else if($originalValue === "语文"){
-        $reply = getContentString(1);
+    else if($originalValue === "作文"){
+        $reply = getLangString(1);
     }
-    else if($originalValue === "数学"){
-        $reply = getContentString(2);
+    else if($originalValue === "拼音"){
+        $reply = getLangString(2);
     }
 
 	// Echo Result to Aligenie

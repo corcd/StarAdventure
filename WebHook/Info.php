@@ -1,57 +1,40 @@
 <?php
-function getCodeName($codeNum){
-    $tmpCodeName = "";
+function getContentString($codeNum){
+    $tmpString = "";
     switch ($codeNum) {
-            case 0: $tmpCodeName ="龙卷风";break;
-            case 1: $tmpCodeName ="热带风暴";break;
-            case 2: $tmpCodeName ="飓风";break;
-            case 3: $tmpCodeName ="严重雷暴";break;
-            case 4: $tmpCodeName ="雷暴";break;
-            case 5: $tmpCodeName ="下雨下雪";break;
-            case 6: $tmpCodeName ="下雨和雨夹雪";break;
-            case 7: $tmpCodeName ="下雪和雨夹雪";break;
-            case 8: $tmpCodeName ="冻毛毛雨";break;
-            case 9: $tmpCodeName ="细雨";break;
-            case 10: $tmpCodeName ="冻雨";break;
-            case 11: $tmpCodeName ="阵雨";break;
-            case 12: $tmpCodeName ="阵雨";break;
-            case 13: $tmpCodeName ="雪花纷飞";break;
-            case 14: $tmpCodeName ="小雪阵雨";break;
-            case 15: $tmpCodeName ="吹雪";break;
-            case 16: $tmpCodeName ="雪";break;
-            case 17: $tmpCodeName ="冰雹";break;
-            case 18: $tmpCodeName ="霰";break;
-            case 19: $tmpCodeName ="灰尘";break;
-            case 20: $tmpCodeName ="有雾";break;
-            case 21: $tmpCodeName ="阴霾";break;
-            case 22: $tmpCodeName ="烟雾";break;
-            case 23: $tmpCodeName ="大风";break;
-            case 24: $tmpCodeName ="有风";break;
-            case 25: $tmpCodeName ="冷";break;
-            case 26: $tmpCodeName ="多云";break;
-            case 27: $tmpCodeName ="夜间云层厚";break;
-            case 28: $tmpCodeName ="白天多云";break;
-            case 29: $tmpCodeName ="夜间部分多云";break;
-            case 30: $tmpCodeName ="白天部分阴天";break;
-            case 31: $tmpCodeName ="夜间无云";break;
-            case 32: $tmpCodeName ="晴朗";break;
-            case 33: $tmpCodeName ="夜间炎热";break;
-            case 34: $tmpCodeName ="白天炎热";break;
-            case 35: $tmpCodeName ="下雨和冰雹";break;
-            case 36: $tmpCodeName ="热";break;
-            case 37: $tmpCodeName ="孤立的雷暴";break;
-            case 38: $tmpCodeName ="散射雷暴";break;
-            case 39: $tmpCodeName ="散射雷暴";break;
-            case 40: $tmpCodeName ="散射";break;
-            case 41: $tmpCodeName ="大雪";break;
-            case 42: $tmpCodeName ="散落的阵雨";break;
-            case 43: $tmpCodeName ="大雪";break;
-            case 44: $tmpCodeName ="部分多云";break;
-            case 45: $tmpCodeName ="雷阵雨";break;
-            case 46: $tmpCodeName ="阵雨";break;
-            case 47: $tmpCodeName ="间歇性雷阵雨";break;
-            case 3200: $tmpCodeName ="无法预测";break;
+            case 0: $tmpString ="让我们开始今天的英语课程；你可以学习单词跟读、字母认知";break;
+            case 1: $tmpString ="让我们开始今天的语文课程；你可以学习古诗词、作文、拼音";break;
+            case 2: $tmpString ="让我们开始今天的数学课程；你可以学习加减法、乘法口诀";break;
     }
-    return $codeNam;
+    return $tmpString;
+}
+
+function getLangString($codeNum){
+    $tmpString = "";
+    switch ($codeNum) {
+            case 0: $tmpString ="让我们开始古诗词训练吧";break;
+            case 1: $tmpString ="";break;
+            case 2: $tmpString ="";break;
+    }
+    return $tmpString;
+}
+
+function rep($codeNum){
+    $tmpString = "";
+    switch ($codeNum) {
+            case 11: $tmpString ="答对啦，好棒！";break;
+            case 22: $tmpString ="好可惜答错了，没关系，下次继续努力";break;
+    }
+    return $tmpString;
+}
+
+function Lesson_Poem1($codeNum){
+    $tmpString = "请跟读这个古诗：";
+    switch ($codeNum) {
+            case 0: $tmpString +="月落乌啼霜满天，江枫渔火对愁眠；姑苏城外寒山寺，夜半钟声到客船";break;
+            case 1: $tmpString +="床前明月光，疑是地上霜；举头望明月，低头思故乡";break;
+            case 2: $tmpString +="日照香炉生紫烟，遥看瀑布挂前川；飞流直下三千尺，疑是银河落九天";break;
+    }
+    return $tmpString;
 }
 ?>
