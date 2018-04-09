@@ -20,11 +20,11 @@
     }
 
     // Content Nexus
-    if($originalValue_ans === "" && $originalValue_num === ""){
+    if($originalValue_ans == "" && $originalValue_num == ""){
         $reply = rep(0);
     }
     else{
-        if($originalValue_ans === Lesson_Poem1($originalValue_num)){
+        if($originalValue_ans == Lesson_Poem1($originalValue_num)){
             $reply = rep(11);
         }
         else{
@@ -36,7 +36,7 @@
     $resultObj->returnCode = "0";
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
-        $returnValue->reply= $reply+Lesson_Poem1(rand(0,2));
+        $returnValue->reply= $reply + Lesson_Poem1(rand(0,2));
         $returnValue->resultType= "RESULT";
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";

@@ -1,5 +1,5 @@
 <?php
-    require("Info.php");
+    require("skill_info.php");
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
 
@@ -8,23 +8,14 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'lang_content'){
+        if ($v['intentParameterName'] === 'index_variable'){
             $originalValue = $v['originalValue'];
             break;
         }
     }
 
     // Content Nexus
-    if($originalValue === "古诗词"){
-        
-    }
-    else if($originalValue === "作文"){
-        
-    }
-    else if($originalValue === "拼音"){
-        
-    }
-    $reply = "";
+    $reply = "这就为你打开" + $originalValue;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
