@@ -14,7 +14,7 @@
     }
 
     // Content Nexus
-    if($originalValue == "是" && $originalValue == "是的" && $originalValue == "好的" && $originalValue = "确定"){
+    if($originalValue == "是" || $originalValue == "是的" || $originalValue == "好的" || $originalValue = "确定"){
         if(1){
             $reply = "购买成功！";
         }
