@@ -15,7 +15,7 @@
     }
 
     // Content Nexus
-    $reply = "这就为你打开" + $originalValue;
+    $reply = "这就为你打开".$originalValue;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
