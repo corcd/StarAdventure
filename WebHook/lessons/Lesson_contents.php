@@ -7,7 +7,7 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === ''){
+        if ($v['intentParameterName'] === 'lang_content'){
             $originalValue = $v['originalValue'];
             break;
         }
