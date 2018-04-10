@@ -7,7 +7,7 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'lesson_poem'){
+        if ($v['intentParameterName'] === 'poem_name'){
             $originalValue = $v['originalValue'];
             break;
         }
@@ -19,7 +19,7 @@
         case "枫桥夜泊": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
         case "黄鹤楼": $desc ="昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。";break;
     }
-    $reply = $desc."欣赏完古诗，你是否有所感触？";
+    $reply = $desc;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
