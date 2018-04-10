@@ -14,7 +14,7 @@
     }
 
     // Content Nexus
-    $reply = "马上开始".$originalValue."的探险旅程";
+    $reply = "那我们就马上开始".$originalValue."的探险旅程！";
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";

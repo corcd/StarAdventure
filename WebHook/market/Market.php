@@ -14,7 +14,7 @@
     }
 
     // Content Nexus
-    $reply = "你确定购买".$originalValue."吗？";
+    $reply = "你确定将要购买".$originalValue."吗？";
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";

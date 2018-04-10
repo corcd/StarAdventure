@@ -14,7 +14,7 @@
     }
 
     // Content Nexus
-    $reply = "好的，这就为你返回到".$originalValue;
+    $reply = "好的，马上回到".$originalValue;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";

@@ -7,14 +7,20 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'market_item'){
+        if ($v['intentParameterName'] === 'lesson_item'){
             $originalValue = $v['originalValue'];
             break;
         }
     }
 
     // Content Nexus
-
+    switch ($originalValue) {
+        case "文学瀚海": $desc ="在浩瀚无垠的文学海洋之中，你可以在这里捕获到无穷无尽新鲜的知识，你可以学习古诗词、也可以学习拼音，甚至还能学习作文";break;
+        case "数理高峰": $desc ="";break;
+        case "外语星辰": $desc ="";break;
+        default: $desc = "";break;
+    }
+    $reply = $desc;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
