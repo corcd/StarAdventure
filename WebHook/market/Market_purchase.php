@@ -6,15 +6,17 @@
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
+    $standardValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName'] === 'market_decision'){
             $originalValue = $v['originalValue'];
+            $standardValue = $v['standardValue'];
             break;
         }
     }
 
     // Content Nexus
-    if($originalValue == "是" || $originalValue == "是的" || $originalValue == "好的" || $originalValue = "确定"){
+    if($$standardValue  == "确定"){
         if(1){
             $reply = "购买成功，赶快去试一试吧！";
         }

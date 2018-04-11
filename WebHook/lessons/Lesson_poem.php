@@ -14,6 +14,7 @@
     }
 
     // Content Nexus
+    $index = rand(1,100);
     switch ($originalValue) {
         case "静夜思": $desc ="床前看月光，疑是地上霜。抬头望山月，低头思故乡。";break;
         case "枫桥夜泊": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
