@@ -15,12 +15,25 @@
 
     // Content Nexus
     switch ($originalValue) {
-        case "古诗词": $desc ="马上进入诗词世界，你准备好了吗？";break;
+        case "古诗词": 
+            $index = rand(1,3);
+            switch ($index) {
+                case 1: $poem_name ="静夜思";break;
+                case 2: $poem_name ="枫桥夜泊";break;
+                case 3: $poem_name ="黄鹤楼";break;
+            }
+            $reply = "我们首先来学习".$poem_name.",请跟我读：";
+            switch ($poem_name) {
+                case "静夜思": $desc ="床前看月光，疑是地上霜。抬头望山月，低头思故乡。";break;
+                case "枫桥夜泊": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
+                case "黄鹤楼": $desc ="昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。";break;
+            }
+            $reply = $reply."".$desc;
+            ;break;
         case "拼音": $desc ="";break;
         case "作文": $desc ="";break;
-        default: $desc = "";break;
     }
-    $reply = $desc;
+
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
