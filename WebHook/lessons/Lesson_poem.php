@@ -15,11 +15,11 @@
 
     // Content Nexus
     if($originalValue == "准备好了"){
-        $index = rand(1,100);
+        $index = rand(1,3);
         switch ($index) {
-            case 0: $poem_name ="静夜思";break;
-            case 1: $poem_name ="枫桥夜泊";break;
-            case 2: $poem_name ="黄鹤楼";break;
+            case 1: $poem_name ="静夜思";break;
+            case 2: $poem_name ="枫桥夜泊";break;
+            case 3: $poem_name ="黄鹤楼";break;
         }
         $reply = "我们首先来学习".$poem_name."请跟我读：";
         switch ($index) {
