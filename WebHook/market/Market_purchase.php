@@ -16,7 +16,7 @@
     }
 
     // Content Nexus
-    if($$standardValue  == "确定"){
+    if($standardValue  == "确定"){
         if(1){
             $reply = "购买成功，赶快去试一试吧！";
         }
