@@ -29,7 +29,7 @@
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
-        $returnValue->resultType= "RESULT";
+        $returnValue->resultType= "CONFIRM";
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
