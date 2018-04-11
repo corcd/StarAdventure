@@ -15,7 +15,7 @@
 
     // Content Nexus
     switch ($originalValue) {
-        case "古诗词": $desc ="优美的诗歌，你想学习哪一首呢？";break;
+        case "古诗词": $desc ="马上进入诗词世界，你准备好了吗？";break;
         case "拼音": $desc ="";break;
         case "作文": $desc ="";break;
         default: $desc = "";break;
