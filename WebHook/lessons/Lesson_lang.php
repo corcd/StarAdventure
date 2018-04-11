@@ -5,22 +5,36 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
-    $originalValue = "";
+    $originalValue1 = "";
+    $originalValue2 = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName'] === 'lang_content'){
-            $originalValue = $v['originalValue'];
+            $originalValue1 = $v['originalValue'];
+            break;
+        }
+        else if ($v['intentParameterName'] === 'poem_action'){
+            $originalValue2 = $v['originalValue'];
             break;
         }
     }
 
     // Content Nexus
-    switch ($originalValue) {
+    switch ($originalValue1) {
         case "古诗词": 
             $index = rand(1,3);
             switch ($index) {
-                case 1: $poem_name ="静夜思";break;
-                case 2: $poem_name ="枫桥夜泊";break;
-                case 3: $poem_name ="黄鹤楼";break;
+                case 1: 
+                    $poem_name ="静夜思";
+                    $poem_author = "李白";
+                    break;
+                case 2: 
+                    $poem_name ="枫桥夜泊";
+                    $poem_author = "张继";
+                    break;
+                case 3: 
+                    $poem_name ="黄鹤楼";
+                    $poem_author = "崔颢";
+                    break;
             }
             $reply = "我们首先来学习".$poem_name.",请跟我读：";
             switch ($poem_name) {
@@ -32,6 +46,10 @@
             ;break;
         case "拼音": $desc ="";break;
         case "作文": $desc ="";break;
+    }
+    if($originalValue2){
+        $reply = "";
+        $reply = $poem_name."这首诗是".$poem_author."专门为王琛琪所创作";
     }
 
 
