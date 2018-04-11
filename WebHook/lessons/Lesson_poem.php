@@ -7,14 +7,14 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'status'){
+        if ($v['intentParameterName'] === 'poem_status'){
             $originalValue = $v['originalValue'];
             break;
         }
     }
 
     // Content Nexus
-    if($status == "准备好了"){
+    if($originalValue == "准备好了"){
         $index = rand(1,100);
         switch ($index) {
             case 0: $poem_name ="静夜思";break;
