@@ -21,7 +21,7 @@
         'createTimeStamp' => ''
     ];
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === $intentname){
+        if ($v['intentParameterName'] === 'lang_content'){
             $temp['intentParameterName'] = $v['intentParameterName'];
             $temp['originalValue'] = $v['originalValue'];
             $originalValue = $v['originalValue'];
