@@ -31,7 +31,7 @@
             break;
         }
     }
-    file_put_content('./log.txt', print_r($temp,true));
+    file_put_contents('./log.txt', print_r($temp,true));
 
 
     // Content Nexus
