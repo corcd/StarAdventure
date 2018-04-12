@@ -1,12 +1,12 @@
 <?php
 function resolveLog($jsonObj,$intentname){
-    $temp = array (
+    $temp = [
         'intentParameterName' => '', 
         'originalValue' => '', 
         'standardValue' => '',
         'liveTime' => '',
         'createTimeStamp' => ''
-    );
+    ];
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName'] === $intentname){
             $temp['intentParameterName'] = $v['intentParameterName'];
