@@ -1,5 +1,5 @@
 <?php
-    require("funtion.php");
+    require("function.php");
     require("skill_info.php");
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
