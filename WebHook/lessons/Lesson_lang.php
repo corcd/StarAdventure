@@ -13,7 +13,6 @@
     //         break;
     //     }
     // }
-    $logPath = './log.txt';
     $temp = [
         'intentParameterName' => '', 
         'originalValue' => '', 
@@ -32,8 +31,7 @@
             break;
         }
     }
-    $fout = '触发:'.var_export($temp, true).';';   
-    file_put_content(__DIR__.'/log.txt', $fout);
+    file_put_content(__DIR__.'/log.txt', print_r($temp,true));
 
 
     // Content Nexus
