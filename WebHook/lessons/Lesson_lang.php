@@ -32,9 +32,9 @@
             break;
         }
     }
-    if(fopen($logPath,'w')){
-        file_put_contents($logPath, print_r($temp, true));
-    }
+    $fout = '触发:'.var_export($temp, true).';';   
+    file_put_content(__DIR__.'/log.txt', $fout);
+
 
     // Content Nexus
     switch ($originalValue) {
