@@ -13,6 +13,7 @@
     //         break;
     //     }
     // }
+    $logPath = './log.txt';
     $temp = [
         'intentParameterName' => '', 
         'originalValue' => '', 
@@ -31,7 +32,9 @@
             break;
         }
     }
-    file_put_contents('log.txt', print_r($temp, true));
+    if(fopen($logPath,'w')){
+        file_put_contents($logPath, print_r($temp, true));
+    }
 
     // Content Nexus
     switch ($originalValue) {
