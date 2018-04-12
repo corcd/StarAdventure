@@ -14,11 +14,11 @@
     //     }
     // }
     $temp = [
-        'intentParameterName' => '', 
-        'originalValue' => '', 
-        'standardValue' => '',
-        'liveTime' => '',
-        'createTimeStamp' => ''
+        'intentParameterName' => '0', 
+        'originalValue' => '0', 
+        'standardValue' => '0',
+        'liveTime' => '0',
+        'createTimeStamp' => '0'
     ];
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName'] === 'lang_content'){
@@ -31,7 +31,7 @@
             break;
         }
     }
-    file_put_content(__DIR__.'/log.txt', print_r($temp,true));
+    file_put_content('./log.txt', print_r($temp,true));
 
 
     // Content Nexus
