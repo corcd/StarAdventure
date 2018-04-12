@@ -1,25 +1,23 @@
 <?php
+    require("../function.php");
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
-    $originalValue1 = "";
-    $originalValue2 = "";
-    foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'lang_content'){
-            $originalValue1 = $v['originalValue'];
-            break;
-        }
-        else if ($v['intentParameterName'] === 'poem_action'){
-            $originalValue2 = $v['originalValue'];
-            break;
-        }
-    }
+    $originalValue = "";
+    // foreach($jsonObj['slotEntities'] as $k=>$v){
+    //     if ($v['intentParameterName'] === 'lang_content'){
+    //         $originalValue = $v['originalValue'];
+    //         break;
+    //     }
+    // }
+    $originalValue = resloveLog($jsonObj,"lang_content");
+
 
     // Content Nexus
-    switch ($originalValue1) {
+    switch ($originalValue) {
         case "古诗词": 
             $index = rand(1,3);
             switch ($index) {
@@ -46,10 +44,6 @@
             ;break;
         case "拼音": $desc ="";break;
         case "作文": $desc ="";break;
-    }
-    if($originalValue2){
-        $reply = "";
-        $reply = $poem_name."这首诗是".$poem_author."专门为王琛琪所创作";
     }
 
 
