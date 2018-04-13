@@ -22,7 +22,7 @@
         'liveTime' => '0',
         'createTimeStamp' => '0'
     ];
-    foreach($jsonObj['slotEntities'] as $k=>$v){
+    foreach($jsonObj['slotEntities'][0] as $k=>$v){
         if ($v['intentParameterName'] === 'lang_content'){
             $temp['intentParameterName'] = $v['intentParameterName'];
             $temp['originalValue'] = $v['originalValue'];
@@ -32,6 +32,8 @@
             $temp['createTimeStamp'] = $v['createTimeStamp'];
             break;
         }
+    }
+    foreach($jsonObj['slotEntities'][1] as $k=>$v){
         if ($v['intentParameterName'] === 'poem_action'){
             $originalValue_action = $v['originalValue'];
             break;
