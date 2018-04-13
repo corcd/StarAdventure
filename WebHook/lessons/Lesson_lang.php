@@ -43,11 +43,11 @@
     }
     file_put_contents('./log.txt', print_r($temp,true));
 
-
+    $reply = "";
     // Content Nexus
     if($originalValue_action == "无"){
         //
-    switch ($originalValue_content) {
+        switch ($originalValue_content) {
         case "古诗词": 
             $index = rand(1,3);
             switch ($index) {
@@ -70,12 +70,11 @@
                 case "枫桥夜泊": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
                 case "黄鹤楼": $desc ="昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。";break;
             }
-            $reply = $reply."".$desc;
             break;
         case "拼音": $desc ="";break;
         case "作文": $desc ="";break;
-        default: $reply = "这个功能我暂时还不会呢";break;
-    }
+        }
+        $reply = $reply."".$desc;
     }
     else if($originalValue_action == "介绍"){
         $reply = "这首诗的背景是";
@@ -83,7 +82,6 @@
     else if($originalValue_action == "解释"){
         $reply = "这首诗讲述了";
     }
-    else{}
 
 
 	// Echo Result to Aligenie
