@@ -77,10 +77,10 @@
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
-        $returnValue->resultType= "ASK_INFO";
-            $askedInfos->parameterName="test";
-            $askedInfos->intentId=$intentId;
-        $returnValue->askedInfos=$askedInfos;
+        $returnValue->resultType= "COMFRIM";
+            //$askedInfos->parameterName="test";
+            //$askedInfos->intentId=$intentId;
+        //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
