@@ -2,6 +2,7 @@
     require("../function.php");
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
+    ile_put_contents('./json.txt', print_r($jsonObj,true));
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
