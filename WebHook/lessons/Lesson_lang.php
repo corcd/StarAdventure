@@ -77,7 +77,7 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "ASK_INFO";
-        $askedInfos->intentParameterName="poem_action";
+            $askedInfos->name="poem_action";
         $returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
