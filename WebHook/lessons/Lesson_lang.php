@@ -6,6 +6,7 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
+    $intentId = $jsonObj['intentId'];
     $originalValue_content = "";
     $originalValue_action = "";
     // foreach($jsonObj['slotEntities'] as $k=>$v){
@@ -77,7 +78,8 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "ASK_INFO";
-            $askedInfos->name="poem_action";
+            $askedInfos->parameterName="test";
+            $askedInfo->intentId=$intentId;
         $returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
