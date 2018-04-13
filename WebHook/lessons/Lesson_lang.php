@@ -45,7 +45,7 @@
 
     $reply = "";
     // Content Nexus
-    if($originalValue_action === "无"){
+    //if($originalValue_action === "无"){
         //
         switch ($originalValue_content) {
         case "古诗词": 
@@ -75,13 +75,13 @@
         case "作文": $desc ="";break;
         }
         $reply = $reply."".$desc;
-    }
-    else if($originalValue_action === "介绍"){
-        $reply = "这首诗的背景是";
-    }
-    else if($originalValue_action === "解释"){
-        $reply = "这首诗讲述了";
-    }
+    //}
+    //else if($originalValue_action === "介绍"){
+    //    $reply = "这首诗的背景是";
+    //}
+    //else if($originalValue_action === "解释"){
+    //    $reply = "这首诗讲述了";
+    //}
 
 
 	// Echo Result to Aligenie
