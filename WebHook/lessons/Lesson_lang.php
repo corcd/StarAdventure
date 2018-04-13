@@ -91,7 +91,7 @@
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
-        $returnValue->resultType= "COMFIRM";
+        $returnValue->resultType= "CONFIRM";
             //$askedInfos->parameterName="test";
             //$askedInfos->intentId=$intentId;
         //$returnValue->askedInfos=$askedInfos;
