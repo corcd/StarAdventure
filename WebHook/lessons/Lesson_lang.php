@@ -79,7 +79,7 @@
         $returnValue->reply= $reply;
         $returnValue->resultType= "ASK_INFO";
             $askedInfos->parameterName="test";
-            $askedInfo->intentId=$intentId;
+            $askedInfos->intentId=$intentId;
         $returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
