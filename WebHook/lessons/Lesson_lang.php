@@ -3,6 +3,7 @@
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
     file_put_contents('./json.txt', print_r($jsonObj,true));
+    file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0],true));
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
