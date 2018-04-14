@@ -1,5 +1,5 @@
 <?php
-    require("../../function.php");
+    require("../function.php");
     $fl = file_get_contents("php://input");
     intentCheck('../../Info/LastIntent.mem','选择项目','不好意思哈，当前的阶段不提供这个功能呢');
     $jsonObj = json_decode($fl, true);
