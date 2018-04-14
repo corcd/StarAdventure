@@ -47,7 +47,7 @@
     }
     file_put_contents('./log.txt', print_r($temp,true));
 
-    $reply = "默认";
+    $reply = $originalValue_content."".$originalValue_action;
     $index = "";
     $poem_name = "";
     $poem_author = "";
