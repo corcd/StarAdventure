@@ -17,27 +17,32 @@
     //         break;
     //     }
     // }
-    $temp = [
+    $temp = array(
         'lang_content' => '0', 
         'poem_action' => '0'
-    ];
-    foreach($jsonObj['slotEntities'][0] as $k=>$v){
-        if ($v['intentParameterName'] === 'lang_content'){
-            //$temp['intentParameterName'] = $v['intentParameterName'];
-            //$temp['originalValue'] = $v['originalValue'];
-            $temp['lang_content'] = $n['originalValue'];
-            $originalValue_content = $v['originalValue'];
-            //$temp['standardValue'] = $v['standardValue'];
-            //$temp['liveTime'] = $v['liveTime'];
-            //$temp['createTimeStamp'] = $v['createTimeStamp'];
-            break;
-        }
-    }
-    foreach($jsonObj['slotEntities'][1] as $m=>$n){
-        if ($n['intentParameterName'] === 'poem_action'){
-            $temp['poem_action'] = $n['originalValue'];
-            $originalValue_action = $n['originalValue'];
-            break;
+    );
+
+    foreach($jsonObj['slotEntities'] as $key=>$value){
+        if(is_array($value)){
+            foreach($value['0'] as $k=>$v){
+                if ($v['intentParameterName'] === 'lang_content'){
+                //$temp['intentParameterName'] = $v['intentParameterName'];
+                //$temp['originalValue'] = $v['originalValue'];
+                $temp['lang_content'] = $v['originalValue'];
+                $originalValue_content = $v['originalValue'];
+                //$temp['standardValue'] = $v['standardValue'];
+                //$temp['liveTime'] = $v['liveTime'];
+                //$temp['createTimeStamp'] = $v['createTimeStamp'];
+                break;
+                }
+            }
+            foreach($value['1'] as $k=>$v){
+                if ($v['intentParameterName'] === 'poem_action'){
+                    $temp['poem_action'] = $v['originalValue'];
+                    $originalValue_action = $v['originalValue'];
+                    break;
+                }
+            }
         }
     }
     file_put_contents('./log.txt', print_r($temp,true));
