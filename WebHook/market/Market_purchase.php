@@ -1,5 +1,23 @@
 <?php
     $fl = file_get_contents("php://input");
+    $lastintentName = file_get_contents('../../Info/LastIntent.mem');
+    if($lastintentName === '商城购买'){
+        //return true;
+    }
+    else{
+        $resultObj->returnCode = "0";
+        $resultObj->returnErrorSolution = "";
+        $resultObj->returnMessage = "";
+        $returnValue->reply= "不好意思哈，当前的阶段不提供这个功能呢";
+        $returnValue->resultType= "CONFIRM";
+        $resultValue->executeCode="SUCCESS";
+        $resultValue->msgInfo="";
+        $resultObj->returnValue=$returnValue;
+        $resultJSON = json_encode($resultObj);
+        echo $resultJSON;
+        //return false;
+        exit(0);
+    }
     $jsonObj = json_decode($fl, true);
 
     // Parser Aligenie Skill JSON

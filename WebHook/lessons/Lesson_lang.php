@@ -1,7 +1,24 @@
 <?php
     require("../function.php");
     $fl = file_get_contents("php://input");
-    $status = intentCheck('../../Info/LastIntent.mem','课程选择','不好意思哈，当前的阶段不提供这个功能呢');
+    $lastintentName = file_get_contents('../../Info/LastIntent.mem');
+    if($lastintentName === '课程选择'){
+        //return true;
+    }
+    else{
+        $resultObj->returnCode = "0";
+        $resultObj->returnErrorSolution = "";
+        $resultObj->returnMessage = "";
+        $returnValue->reply= "不好意思哈，当前的阶段不提供这个功能呢";
+        $returnValue->resultType= "CONFIRM";
+        $resultValue->executeCode="SUCCESS";
+        $resultValue->msgInfo="";
+        $resultObj->returnValue=$returnValue;
+        $resultJSON = json_encode($resultObj);
+        echo $resultJSON;
+        //return false;
+        exit(0);
+    }
     $jsonObj = json_decode($fl, true);
     //file_put_contents('./json.txt', print_r($jsonObj,true));
     //file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0]['intentParameterName'],true));
