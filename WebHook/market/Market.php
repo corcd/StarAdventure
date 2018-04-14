@@ -4,6 +4,7 @@
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
+        file_put_contents('../../Info/LastIntent.mem', print_r($intentName,true));  //Output The Lastest Intent Name
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
