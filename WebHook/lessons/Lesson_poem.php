@@ -1,5 +1,23 @@
 <?php
     $fl = file_get_contents("php://input");
+    $lastintentName = file_get_contents('../../Info/LastIntent.mem');
+    if($lastintentName === '文学瀚海'){
+        //return true;
+    }
+    else{
+        $resultObj->returnCode = "0";
+        $resultObj->returnErrorSolution = "";
+        $resultObj->returnMessage = "";
+        $returnValue->reply= "不好意思哈，当前的阶段不提供这个功能呢";
+        $returnValue->resultType= "CONFIRM";
+        $resultValue->executeCode="SUCCESS";
+        $resultValue->msgInfo="";
+        $resultObj->returnValue=$returnValue;
+        $resultJSON = json_encode($resultObj);
+        echo $resultJSON;
+        //return false;
+        exit(0);
+    }
     $jsonObj = json_decode($fl, true);
 
     // Parser Aligenie Skill JSON
@@ -12,22 +30,14 @@
             break;
         }
     }
+    $reply = "";
 
     // Content Nexus
-    if($originalValue == "准备好了"){
-        $index = rand(1,3);
-        switch ($index) {
-            case 1: $poem_name ="静夜思";break;
-            case 2: $poem_name ="枫桥夜泊";break;
-            case 3: $poem_name ="黄鹤楼";break;
-        }
-        $reply = "我们首先来学习".$poem_name.",请跟我读：";
-        switch ($poem_name) {
-            case "静夜思": $desc ="床前看月光，疑是地上霜。抬头望山月，低头思故乡。";break;
-            case "枫桥夜泊": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
-            case "黄鹤楼": $desc ="昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。";break;
-        }
-        $reply = $reply."".$desc;
+    if($originalValue == "介绍"){
+        $reply = "这首诗的介绍";
+    }
+    else if($originalValue == "解释"){
+        $reply = "这首诗的解释";
     }
 
 	// Echo Result to Aligenie
