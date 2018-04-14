@@ -24,7 +24,7 @@
 
     foreach($jsonObj['slotEntities'] as $key=>$value){
         if(is_array($value)){
-            foreach($value['0'] as $k=>$v){
+            foreach($value[0] as $k=>$v){
                 if ($v['intentParameterName'] === 'lang_content'){
                 //$temp['intentParameterName'] = $v['intentParameterName'];
                 //$temp['originalValue'] = $v['originalValue'];
@@ -36,7 +36,7 @@
                 break;
                 }
             }
-            foreach($value['1'] as $k=>$v){
+            foreach($value[1] as $k=>$v){
                 if ($v['intentParameterName'] === 'poem_action'){
                     $temp['poem_action'] = $v['originalValue'];
                     $originalValue_action = $v['originalValue'];
