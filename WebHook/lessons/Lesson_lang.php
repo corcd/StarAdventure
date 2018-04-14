@@ -3,7 +3,7 @@
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
     file_put_contents('./json.txt', print_r($jsonObj,true));
-    file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0],true));
+    file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0]['intentParameterName'],true));
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
@@ -22,10 +22,9 @@
         'poem_action' => '0'
     );
 
-    foreach($jsonObj['slotEntities'] as $key=>$value){
-        if(is_array($value)){
-            foreach($value[0] as $k=>$v){
-                if ($v['intentParameterName'] === 'lang_content'){
+    foreach($jsonObj['slotEntities'] as $k=>$v){
+        
+                if ($v[0]['intentParameterName'] === 'lang_content'){
                 //$temp['intentParameterName'] = $v['intentParameterName'];
                 //$temp['originalValue'] = $v['originalValue'];
                 $temp['lang_content'] = $v['originalValue'];
@@ -35,15 +34,12 @@
                 //$temp['createTimeStamp'] = $v['createTimeStamp'];
                 break;
                 }
-            }
-            foreach($value[1] as $k=>$v){
-                if ($v['intentParameterName'] === 'poem_action'){
+           
+                if ($v[1]['intentParameterName'] === 'poem_action'){
                     $temp['poem_action'] = $v['originalValue'];
                     $originalValue_action = $v['originalValue'];
                     break;
                 }
-            }
-        }
     }
     file_put_contents('./log.txt', print_r($temp,true));
 
