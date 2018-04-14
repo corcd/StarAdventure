@@ -23,7 +23,10 @@ function resolveLog($jsonObj,$intentname){
 
 function intentCheck($PATH,$intentName,$reply){
     $lastintentName = file_get_contents($PATH);
-    if($lastintentName != $intentname){
+    if($lastintentName == $intentname){
+        return true;
+    }
+    else{
         $resultObj->returnCode = "0";
         $resultObj->returnErrorSolution = "";
         $resultObj->returnMessage = "";
@@ -34,7 +37,7 @@ function intentCheck($PATH,$intentName,$reply){
         $resultObj->returnValue=$returnValue;
         $resultJSON = json_encode($resultObj);
         echo $resultJSON;
-        exit;
+        return false;
     }
 }
 ?>
