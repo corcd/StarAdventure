@@ -20,4 +20,21 @@ function resolveLog($jsonObj,$intentname){
     file_put_contents('log.txt', print_r($temp, true));
     return $temp['originalValue'];
 }
+
+function intentCheck($PATH,$intentName,$reply){
+    $lastintentName = file_get_contents($PATH,FILE_USE_INCLUDE_PATH);
+    if($lastintentName != $intentname){
+        $resultObj->returnCode = "0";
+        $resultObj->returnErrorSolution = "";
+        $resultObj->returnMessage = "";
+        $returnValue->reply= $reply;
+        $returnValue->resultType= "CONFIRM";
+        $resultValue->executeCode="SUCCESS";
+        $resultValue->msgInfo="";
+        $resultObj->returnValue=$returnValue;
+        $resultJSON = json_encode($resultObj);
+        echo $resultJSON;
+        exit;
+    }
+}
 ?>

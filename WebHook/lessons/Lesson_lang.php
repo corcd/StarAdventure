@@ -1,23 +1,7 @@
 <?php
-    require("../function.php");
+    require("../../function.php");
     $fl = file_get_contents("php://input");
-    $lastintentName = file_get_contents('../../Info/LastIntent.mem',FILE_USE_INCLUDE_PATH);
-    if($lastintentName != 'Lessons'){
-        $resultObj->returnCode = "0";
-        $resultObj->returnErrorSolution = "";
-        $resultObj->returnMessage = "";
-        $returnValue->reply= "不好意思哈，当前的阶段不提供这个功能呢";
-        $returnValue->resultType= "CONFIRM";
-            //$askedInfos->parameterName="test";
-            //$askedInfos->intentId=$intentId;
-        //$returnValue->askedInfos=$askedInfos;
-        $resultValue->executeCode="SUCCESS";
-        $resultValue->msgInfo="";
-        $resultObj->returnValue=$returnValue;
-        $resultJSON = json_encode($resultObj);
-        echo $resultJSON;
-        exit;
-    }
+    intentCheck('../../Info/LastIntent.mem','课程选择','不好意思哈，当前的阶段不提供这个功能呢');
     $jsonObj = json_decode($fl, true);
     //file_put_contents('./json.txt', print_r($jsonObj,true));
     //file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0]['intentParameterName'],true));
