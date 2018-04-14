@@ -22,7 +22,7 @@ function resolveLog($jsonObj,$intentname){
 }
 
 function intentCheck($PATH,$intentName,$reply){
-    $lastintentName = file_get_contents($PATH,FILE_USE_INCLUDE_PATH);
+    $lastintentName = file_get_contents($PATH);
     if($lastintentName != $intentname){
         $resultObj->returnCode = "0";
         $resultObj->returnErrorSolution = "";
