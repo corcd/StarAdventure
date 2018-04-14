@@ -22,24 +22,18 @@
         'poem_action' => '0'
     );
 
-    foreach($jsonObj['slotEntities'] as $k=>$v){
-        
-                if ($v[0]['intentParameterName'] === 'lang_content'){
-                //$temp['intentParameterName'] = $v['intentParameterName'];
-                //$temp['originalValue'] = $v['originalValue'];
-                $temp['lang_content'] = $v['originalValue'];
-                $originalValue_content = $v['originalValue'];
-                //$temp['standardValue'] = $v['standardValue'];
-                //$temp['liveTime'] = $v['liveTime'];
-                //$temp['createTimeStamp'] = $v['createTimeStamp'];
-                break;
-                }
-           
-                if ($v[1]['intentParameterName'] === 'poem_action'){
-                    $temp['poem_action'] = $v['originalValue'];
-                    $originalValue_action = $v['originalValue'];
-                    break;
-                }
+    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'lang_content'){
+        //$temp['intentParameterName'] = $v['intentParameterName'];
+        //$temp['originalValue'] = $v['originalValue'];
+        $temp['lang_content'] = $jsonObj['slotEntities'][0]['originalValue'];
+        $originalValue_content = $jsonObj['slotEntities'][0]['originalValue'];
+        //$temp['standardValue'] = $v['standardValue'];
+        //$temp['liveTime'] = $v['liveTime'];
+        //$temp['createTimeStamp'] = $v['createTimeStamp'];
+        }
+    if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_action'){
+        $temp['poem_action'] = $jsonObj['slotEntities'][1]['originalValue'];
+        $originalValue_action = $jsonObj['slotEntities'][1]['originalValue'];
     }
     file_put_contents('./log.txt', print_r($temp,true));
 
