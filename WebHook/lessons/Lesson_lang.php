@@ -133,12 +133,12 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "CONFIRM";
-        $returnValue->actions= $actions;
+        $returnValue->actions[0]= $actions;
             $actions->name= "audioPlayGenieSource";
             $actions->properties= $properties;
                 $properties->audioGenieId= "4208";
         //$returnValue->askedInfos=$askedInfos;
-        $resultValue->executeCode="SUCCESS";
+        $resultValue->executeCode= "SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
     $resultJSON = json_encode($resultObj);
