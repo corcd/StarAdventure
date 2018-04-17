@@ -142,6 +142,6 @@
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
     $resultJSON = json_encode($resultObj);
-    //file_put_contents('./replyJson.txt', print_r($resultObj,true));
+    file_put_contents('./replyJson.txt', print_r($resultObj,true));
     echo $resultJSON;
 ?>
