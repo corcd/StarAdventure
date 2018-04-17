@@ -133,10 +133,10 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "CONFIRM";
-        $returnValue->actions= $actions;
             $actions->name= "audioPlayGenieSource";
-            $actions->properties= $properties;
                 $properties->audioGenieId= "4208";
+            $actions->properties= $properties;
+        $returnValue->actions= $actions;
         //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode= "SUCCESS";
         $resultValue->msgInfo="";
