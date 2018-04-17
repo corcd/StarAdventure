@@ -134,8 +134,8 @@
         $returnValue->reply= $reply;
         $returnValue->resultType= "CONFIRM";
         $returnValue->actions= $actions;
-            $actions[0]->name= "audioPlayGenieSource";
-            $actions[0]->properties= $properties;
+            $actions->name= "audioPlayGenieSource";
+            $actions->properties= $properties;
                 $properties->audioGenieId= "4208";
         //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode= "SUCCESS";
