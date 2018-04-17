@@ -83,13 +83,13 @@
                         $poem_author = "崔颢";
                         break;
                 }
-                $reply = "我们首先来学习".$poem_author."的".$poem_name.",请跟我读:";
+                $reply = "我们首先来学习".$poem_author."的".$poem_name."，请跟我读，";
                 switch ($poem_name) {
                     case "《静夜思》": $desc ="床前看月光，疑是地上霜。抬头望山月，低头思故乡。";break;
                     case "《枫桥夜泊》": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
                     case "《黄鹤楼》": $desc ="昔人已乘黄鹤去，此地空余黄鹤楼。黄鹤一去不复返，白云千载空悠悠。晴川历历汉阳树，芳草萋萋鹦鹉洲。日暮乡关何处是？烟波江上使人愁。";break;
                 }
-                $reply = $reply."".$desc;
+                //$reply = $reply."".$desc;
                 break;
             case "课文": 
                 $index = 2;
@@ -107,7 +107,7 @@
                         $article_author = "";
                         break;
                 }
-                $reply = "我们首先来学习".$article_author."的".$article_name;
+                $reply = "我们首先来学习".$article_author."的".$article_name."吧，";
                 switch ($article_name) {
                     case "《故乡》": $desc ="我冒着严寒，回到相隔二千余里，别了二十余年的故乡去。时候既然是深冬；渐近故乡时，天气又阴晦了，冷风吹进船舱中，呜呜的响，从篷隙向外一望，苍黄的天底下，远近横着几个萧索的荒村，没有一些活气。我的心禁不住悲凉起来了。阿！这不是我二十年来时时记得的故乡？我所记得的故乡全不如此。我的故乡好得多了。但要我记起他的美丽，说出他的佳处来，却又没有影像，没有言辞了。仿佛也就如此。于是我自己解释说：故乡本也如此，——虽然没有进步，也未必有如我所感的悲凉，这只是我自己心情的改变罢了，因为我这次回乡，本没有什么好心绪 ";break;
                     //case "枫桥夜泊": $desc ="月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。";break;
@@ -133,8 +133,10 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "CONFIRM";
-            //$askedInfos->parameterName="test";
-            //$askedInfos->intentId=$intentId;
+        $returnValue->actions= $actions;
+            $actions->name= "audioPlayGenieSource";
+            $actions->properties= $properties;
+                $properties->audioGenieId= "4208";
         //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
