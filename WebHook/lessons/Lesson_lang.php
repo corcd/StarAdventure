@@ -136,7 +136,7 @@
             $actions->name= "audioPlayGenieSource";
                 $properties->audioGenieId= "4208";
             $actions->properties= $properties;
-        $returnValue->actions= $actions;
+        $returnValue->actions[0]= $actions;
         //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode= "SUCCESS";
         $resultValue->msgInfo="";
