@@ -24,7 +24,7 @@
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
-    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'eng_word_kinds'){
+    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'word_kinds'){
         $originalValue = $jsonObj['slotEntities'][0]['originalValue'];
     }
     $reply = "";

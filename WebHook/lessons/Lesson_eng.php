@@ -54,8 +54,8 @@
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
-        $returnValue->resultType= "CONFIRM";
-        $resultValue->executeCode= "SUCCESS";
+        $returnValue->resultType="CONFIRM";
+        $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
     $resultJSON = json_encode($resultObj);
