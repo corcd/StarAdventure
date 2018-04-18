@@ -1,7 +1,7 @@
 <?php
     $fl = file_get_contents("php://input");
     $lastintentName = file_get_contents('../../Info/LastIntent.mem');
-    if($lastintentName === '语文星球'){
+    if($lastintentName === '外语星球'){
         //return true;
     }
     else{
@@ -25,7 +25,7 @@
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'action'){
+        if ($v['intentParameterName'] === 'eng_word_kinds'){
             $originalValue = $v['originalValue'];
             break;
         }
@@ -33,14 +33,15 @@
     $reply = "";
 
     // Content Nexus
-    if($originalValue == "背诵"){
-        $reply = "背诵《故乡》第 12 段：还有闰土，他每到我家来时，总问起你，很想见你一面。我已经将你到家的大约日期通知他，他也许就要来了。（小朋友请背诵下一段）";
+    if($originalValue == "颜色"){
+        //$reply = "小朋友，仔细，请";
     }
-    else if($originalValue == "修辞"){
-        $reply = "这篇文章里运用了比喻、拟物和借代等修辞手法。";
+    else if($originalValue == "数字"){
+        //$reply = "";
     }
-    else if($originalValue == "作者信息"){
-        $reply = "鲁迅，本名周树人，原名樟寿，字豫才，以笔名鲁迅闻名于世，浙江绍兴人，为中国的近代著名作家，新文化运动的领导人之一，中国现代文学的奠基人和开山巨匠，在西方世界享有盛誉的中国近代文学家、思想家。";
+    else if($originalValue == "动物"){
+        //$reply = "";
+        $audioGenieId = "";
     }
 
 	// Echo Result to Aligenie
@@ -49,6 +50,10 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "RESULT";
+            $actions->name= "audioPlayGenieSource";
+                $properties->audioGenieId= $audioGenieId;
+            $actions->properties= $properties;
+        $returnValue->actions[0]= $actions;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
