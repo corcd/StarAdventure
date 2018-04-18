@@ -49,7 +49,7 @@
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
-        $returnValue->resultType= "RESULT";
+        $returnValue->resultType= "CONFIRM";
             $actions->name= "audioPlayGenieSource";
                 $properties->audioGenieId= $audioGenieId;
             $actions->properties= $properties;
