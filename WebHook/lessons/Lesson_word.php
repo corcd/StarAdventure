@@ -41,7 +41,7 @@
     }
     else if($originalValue == "动物"){
         //$reply = "";
-        $audioGenieId = "";
+        $audioGenieId = "4210";
     }
 
 	// Echo Result to Aligenie
