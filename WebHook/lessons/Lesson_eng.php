@@ -20,8 +20,6 @@
         exit(0);
     }
     $jsonObj = json_decode($fl, true);
-    //file_put_contents('./json.txt', print_r($jsonObj,true));
-    //file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0]['intentParameterName'],true));
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
@@ -29,29 +27,11 @@
     $utterance = $jsonObj['utterance'];
     $intentId = $jsonObj['intentId'];
     $originalValue_content = "";
-    $originalValue_action = "";
-    // foreach($jsonObj['slotEntities'] as $k=>$v){
-    //     if ($v['intentParameterName'] === 'lang_content'){
-    //         $originalValue = $v['originalValue'];
-    //         break;
-    //     }
-    // }
-    $temp = array(
-        'lang_content' => '0', 
-        'poem_action' => '0'
-    );
 
-    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'lang_content'){
-        //$temp['intentParameterName'] = $v['intentParameterName'];
-        //$temp['originalValue'] = $v['originalValue'];
-        $temp['lang_content'] = $jsonObj['slotEntities'][0]['originalValue'];
+    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'eng_content'){
         $originalValue_content = $jsonObj['slotEntities'][0]['originalValue'];
-        //$temp['standardValue'] = $v['standardValue'];
-        //$temp['liveTime'] = $v['liveTime'];
-        //$temp['createTimeStamp'] = $v['createTimeStamp'];
-        }
-    //file_put_contents('./log.txt', print_r($temp,true));
-    $reply = $originalValue_content."".$originalValue_action;
+    }
+    $reply = "";
     $index = "";
     $desc = "";
 
@@ -67,7 +47,7 @@
         case "复合拼读": $desc ="";break;
         case "简单句子": $desc ="";break;
     }
-
+    $reply = $reply."".$desc;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
