@@ -38,7 +38,7 @@
             $desc = "";
             break;
         case "动物分类": 
-            $desc = "";
+            $desc = "小朋友请跟读单词：";
             $audioGenieId = "4210";
             break;
         case "水果分类": $desc ="";break;
