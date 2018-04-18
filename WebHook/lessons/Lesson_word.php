@@ -33,26 +33,21 @@
     $reply = "";
 
     // Content Nexus
-    if($originalValue == "颜色"){
-        //$reply = "小朋友，仔细，请";
-    }
-    else if($originalValue == "数字"){
-        //$reply = "";
-    }
-    else if($originalValue == "动物"){
-        //$reply = "";
-        $audioGenieId = "4210";
-    }
-    switch ($originalValue_content) {
+    switch ($originalValue) {
         case "颜色": 
-            $desc = "这里有：颜色、数字、动物、水果和文具五个单词分类，小朋友你想选择哪个呢？";
+            $desc = "";
             break;
         case "数字": 
-                break;
-        case "动物": $desc ="";break;
+            $desc = "";
+            break;
+        case "动物": 
+            $desc ="";
+            $audioGenieId = "4210";
+            break;
         case "水果": $desc ="";break;
         case "文具": $desc ="";break;
     }
+    $reply = $reply."".$desc;
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
