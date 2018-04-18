@@ -75,11 +75,6 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "CONFIRM";
-            $actions->name= "audioPlayGenieSource";
-                $properties->audioGenieId= $audioGenieId;
-            $actions->properties= $properties;
-        $returnValue->actions[0]= $actions;
-        //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode= "SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
