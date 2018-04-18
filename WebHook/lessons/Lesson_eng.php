@@ -50,38 +50,22 @@
         //$temp['liveTime'] = $v['liveTime'];
         //$temp['createTimeStamp'] = $v['createTimeStamp'];
         }
-    if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_action'){
-        $temp['poem_action'] = $jsonObj['slotEntities'][1]['originalValue'];
-        $originalValue_action = $jsonObj['slotEntities'][1]['originalValue'];
-    }
     //file_put_contents('./log.txt', print_r($temp,true));
     $reply = $originalValue_content."".$originalValue_action;
     $index = "";
-    $poem_name = "";
-    $article_name = "";
-    $poem_author = "";
     $desc = "";
 
     // Content Nexus
-    if($originalValue_action === "无"){
-        //
-        switch ($originalValue_content) {
-            case "看图识单词": 
-                $desc = "这里有：颜色、数字、动物、水果和文具五个单词分类，小朋友你想选择哪个呢？";
+    switch ($originalValue_content) {
+        case "看图识单词": 
+            $desc = "这里有：颜色、数字、动物、水果和文具五个单词分类，小朋友你想选择哪个呢？";
+            break;
+        case "字母教学": 
                 break;
-            case "字母教学": 
-                break;
-            case "单词拼写": $desc ="";break;
-            case "情景教学": $desc ="";break;
-            case "复合拼读": $desc ="";break;
-            case "简单句子": $desc ="";break;
-        }
-    }
-    else if($originalValue_action === "介绍"){
-       $reply = "这首诗的背景是";
-    }
-    else if($originalValue_action === "解释"){
-       $reply = "这首诗讲述了";
+        case "单词拼写": $desc ="";break;
+        case "情景教学": $desc ="";break;
+        case "复合拼读": $desc ="";break;
+        case "简单句子": $desc ="";break;
     }
 
 
