@@ -37,7 +37,7 @@
         case "数字": 
             $desc = "";
             break;
-        case "动物": 
+        case "动物分类": 
             $desc = "";
             $audioGenieId = "4210";
             break;
