@@ -24,11 +24,8 @@
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
     $originalValue = "";
-    foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'eng_word_kinds'){
-            $originalValue = $v['originalValue'];
-            break;
-        }
+    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'eng_word_kinds'){
+        $originalValue = $jsonObj['slotEntities'][0]['originalValue'];
     }
     $reply = "";
 
@@ -41,7 +38,7 @@
             $desc = "";
             break;
         case "动物": 
-            $desc ="";
+            $desc = "";
             $audioGenieId = "4210";
             break;
         case "水果": $desc ="";break;
@@ -55,8 +52,8 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= "CONFIRM";
-            $actions->name= "audioPlayGenieSource";
-                $properties->audioGenieId= $audioGenieId;
+            $actions->name = "audioPlayGenieSource";
+                $properties->audioGenieId = $audioGenieId;
             $actions->properties= $properties;
         $returnValue->actions[0]= $actions;
         $resultValue->executeCode="SUCCESS";
