@@ -43,6 +43,16 @@
         //$reply = "";
         $audioGenieId = "4210";
     }
+    switch ($originalValue_content) {
+        case "颜色": 
+            $desc = "这里有：颜色、数字、动物、水果和文具五个单词分类，小朋友你想选择哪个呢？";
+            break;
+        case "数字": 
+                break;
+        case "动物": $desc ="";break;
+        case "水果": $desc ="";break;
+        case "文具": $desc ="";break;
+    }
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
