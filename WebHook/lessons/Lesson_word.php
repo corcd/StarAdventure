@@ -31,18 +31,18 @@
 
     // Content Nexus
     switch ($originalValue) {
-        case "颜色": 
+        case "颜色分类": 
             $desc = "";
             break;
-        case "数字": 
+        case "数字分类": 
             $desc = "";
             break;
         case "动物分类": 
             $desc = "";
             $audioGenieId = "4210";
             break;
-        case "水果": $desc ="";break;
-        case "文具": $desc ="";break;
+        case "水果分类": $desc ="";break;
+        case "文具分类": $desc ="";break;
     }
     $reply = $reply."".$desc;
 

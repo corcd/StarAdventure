@@ -38,7 +38,7 @@
     // Content Nexus
     switch ($originalValue_content) {
         case "看图识单词": 
-            $desc = "这里有：颜色、数字、动物、水果和文具五个单词分类，小朋友你想选择哪个呢？";
+            $desc = "这里有：颜色分类、数字分类、动物分类、水果分类和文具分类五个单词分类，小朋友你想选择哪个呢？";
             break;
         case "字母教学": 
                 break;
