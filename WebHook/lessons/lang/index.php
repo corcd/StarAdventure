@@ -81,8 +81,8 @@
                     $sentences = "";
                     break;
             }
-            //$word = randomkeys($sentences);
-            $word = "枫";
+            $word = randomkeys($sentences);
+            //$word = "枫";
             if($Value_answer == "N/A"){
                 $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
                 $resultType = "ASK_INF";
