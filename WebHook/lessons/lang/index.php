@@ -81,13 +81,18 @@
                     $sentences = "";
                     break;
             }
-            $word = randomkeys($sentences);
+            //$word = randomkeys($sentences);
+            $word = "枫";
             if($Value_answer == "N/A"){
                 $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
                 $resultType = "ASK_INF";
-                        $askedInfos->parameterName= "poem_word_answer";
-                        $askedInfos->intentId= $intentId;
-                    $returnValue->askedInfos[0]= $askedInfos;
+                    $actions->name= "audioPlayGenieSource";
+                        $properties->audioGenieId= $audioGenieId;
+                    $actions->properties= $properties;
+                $returnValue->actions[0]= $actions;
+                    $askedInfos->parameterName= "poem_word_answer";
+                    $askedInfos->intentId= $intentId;
+                $returnValue->askedInfos[0]= $askedInfos;
             }
             else if($Value_answer != "N/A"){
                 if($Value_answer == $word){
@@ -139,11 +144,6 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= $resultType;
-            $actions->name= "audioPlayGenieSource";
-                $properties->audioGenieId= $audioGenieId;
-            $actions->properties= $properties;
-        $returnValue->actions[0]= $actions;
-        //$returnValue->askedInfos=$askedInfos;
         $resultValue->executeCode= "SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
