@@ -1,6 +1,6 @@
 <?php
     function randomkeys($pattern){     
-        $key = $pattern{mt_rand(0,strlen($pattern))};
+        $key = $pattern[mt_rand(0,strlen($pattern))];
         return $key;
     }
     
