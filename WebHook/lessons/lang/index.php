@@ -94,7 +94,7 @@
     $resultObj->returnCode = "0";
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
-        $returnValue->reply= $reply;
+        $returnValue->reply= $intentName.":".$reply;
         $returnValue->resultType= $resultType;
             $actions->name= "audioPlayGenieSource";
                 $properties->audioGenieId= $audioGenieId;
