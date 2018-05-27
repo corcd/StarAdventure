@@ -77,7 +77,7 @@
                     break;
             }
             $pin = rand(0,strlen($sentences));
-            $word = $sentences[$pin];
+            $word = $sentences[0];
             //$word = "枫";
             file_put_contents("word.mem", $word);
             if($Value_answer == "N/A"){
