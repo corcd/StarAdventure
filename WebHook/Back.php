@@ -5,17 +5,18 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
         file_put_contents('../../Info/LastIntent.mem', print_r($intentName,true));  //Output The Lastest Intent Name
+        
     $utterance = $jsonObj['utterance'];
-    $originalValue = "";
+    $Value = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName'] === 'page'){
-            $originalValue = $v['originalValue'];
+            $Value = $v['standardValue'];
             break;
         }
     }
 
     // Content Nexus
-    $reply = "好的，马上回到".$originalValue;
+    $reply = "好的，我们马上回到".$Value."页面";
 
 	// Echo Result to Aligenie
     $resultObj->returnCode = "0";
