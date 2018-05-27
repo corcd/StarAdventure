@@ -1,6 +1,5 @@
 <?php   
-    function mb_str_split( $string ) {
-        // /u表示把字符串当作utf-8处理，并把字符串开始和结束之前所有的字符串分割成数组
+    function mb_str_split( $string ) {    // /u表示把字符串当作utf-8处理，并把字符串开始和结束之前所有的字符串分割成数组
         return preg_split('/(?<!^)(?!$)/u', $string ); 
     }
 
@@ -81,14 +80,14 @@
                     $sentences = "";
                     break;
             }
-            $ret = array();
-            foreach (mb_str_split($sentences) as $c){
-                $ret[] = $c;
-            }
-            $word = $ret[rand(0,count($ret))];
-            //$word = "枫";
-            file_put_contents("word.mem", $word);
             if($Value_answer == "N/A"){
+                $ret = array();
+                foreach (mb_str_split($sentences) as $c){
+                    $ret[] = $c;
+                }
+                $word = $ret[rand(0,count($ret))];
+                //$word = "枫";
+                file_put_contents("word.mem", $word);  //外部存储
                 $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
                 $resultType = "ASK_INF";
                     $actions->name= "audioPlayGenieSource";
