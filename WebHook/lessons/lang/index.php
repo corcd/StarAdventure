@@ -76,7 +76,7 @@
                     $sentences = "";
                     break;
             }
-            $pin = mt_rand(0,strlen($pattern));
+            $pin = rand(0,strlen($sentences));
             $word = $sentences[$pin];
             //$word = "枫";
             file_put_contents("word.mem", $word);
