@@ -6,22 +6,22 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
-    $originalValue = "";
+    $Value = "";
     foreach($jsonObj['slotEntities'] as $k=>$v){
         if ($v['intentParameterName'] === 'content'){
-            $originalValue = $v['originalValue'];
+            $Value = $v['standardValue'];
             break;
         }
     }
 
     // Content Nexus
-    if($originalValue === "英语"){
+    if($Value === "英语"){
         $reply = getContentString(0);
     }
-    else if($originalValue === "语文"){
+    else if($Value === "语文"){
         $reply = getContentString(1);
     }
-    else if($originalValue === "数学"){
+    else if($Value === "数学"){
         $reply = getContentString(2);
     }
 
