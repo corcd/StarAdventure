@@ -1,7 +1,7 @@
 <?php
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
-    file_put_contents('./log.txt', print_r($jsonObj,true));
+    file_put_contents('log.txt', print_r($jsonObj,true));
 
     // $lastintentName = file_get_contents('../../Info/LastIntent.mem');
     // if($lastintentName == "语文"){
