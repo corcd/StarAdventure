@@ -1,38 +1,17 @@
 <?php
-    require("../function.php");
     $fl = file_get_contents("php://input");
-    $lastintentName = file_get_contents('../../Info/LastIntent.mem');
-    if($lastintentName === '课程选择'){
-        //return true;
-    }
-    else{
-        $resultObj->returnCode = "0";
-        $resultObj->returnErrorSolution = "";
-        $resultObj->returnMessage = "";
-        $returnValue->reply= "不好意思哈，当前的阶段不提供这个功能呢";
-        $returnValue->resultType= "CONFIRM";
-        $resultValue->executeCode="SUCCESS";
-        $resultValue->msgInfo="";
-        $resultObj->returnValue=$returnValue;
-        $resultJSON = json_encode($resultObj);
-        echo $resultJSON;
-        //return false;
-        exit(0);
-    }
     $jsonObj = json_decode($fl, true);
-    //file_put_contents('./json.txt', print_r($jsonObj,true));
-    //file_put_contents('./json_0.txt', print_r($jsonObj['slotEntities'][0]['intentParameterName'],true));
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
         file_put_contents('../../Info/LastIntent.mem', $intentName);  //Output The Lastest Intent Name
     $utterance = $jsonObj['utterance'];
     $intentId = $jsonObj['intentId'];
-    $originalValue_content = "";
-    $originalValue_action = "";
+    $Value_content = "";
+    $Value_action = "";
     // foreach($jsonObj['slotEntities'] as $k=>$v){
     //     if ($v['intentParameterName'] === 'lang_content'){
-    //         $originalValue = $v['originalValue'];
+    //         $Value = $v['Value'];
     //         break;
     //     }
     // }
@@ -43,19 +22,19 @@
 
     if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'lang_content'){
         //$temp['intentParameterName'] = $v['intentParameterName'];
-        //$temp['originalValue'] = $v['originalValue'];
-        $temp['lang_content'] = $jsonObj['slotEntities'][0]['originalValue'];
-        $originalValue_content = $jsonObj['slotEntities'][0]['originalValue'];
+        //$temp['Value'] = $v['Value'];
+        $temp['lang_content'] = $jsonObj['slotEntities'][0]['standardValue'];
+        $Value_content = $jsonObj['slotEntities'][0]['standardValue'];
         //$temp['standardValue'] = $v['standardValue'];
         //$temp['liveTime'] = $v['liveTime'];
         //$temp['createTimeStamp'] = $v['createTimeStamp'];
         }
     if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_action'){
-        $temp['poem_action'] = $jsonObj['slotEntities'][1]['originalValue'];
-        $originalValue_action = $jsonObj['slotEntities'][1]['originalValue'];
+        $temp['poem_action'] = $jsonObj['slotEntities'][1]['standardValue'];
+        $Value_action = $jsonObj['slotEntities'][1]['standardValue'];
     }
     //file_put_contents('./log.txt', print_r($temp,true));
-    $reply = $originalValue_content."".$originalValue_action;
+    $reply = $Value_content."".$Value_action;
     $index = "";
     $poem_name = "";
     $article_name = "";
@@ -63,9 +42,9 @@
     $desc = "";
 
     // Content Nexus
-    if($originalValue_action === "无"){
+    if($Value_action === "无"){
         //
-        switch ($originalValue_content) {
+        switch ($Value_content) {
             case "古诗词": 
                 //$index = rand(1,3);
                 $index = 2;
@@ -121,10 +100,10 @@
             case "作文": $desc ="";break;
         }
     }
-    else if($originalValue_action === "介绍"){
+    else if($Value_action === "介绍"){
        $reply = "这首诗的背景是";
     }
-    else if($originalValue_action === "解释"){
+    else if($Value_action === "解释"){
        $reply = "这首诗讲述了";
     }
 
@@ -144,6 +123,6 @@
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
     $resultJSON = json_encode($resultObj);
-    file_put_contents('./replyJson.txt', print_r($resultObj,true));
+    //file_put_contents('./replyJson.txt', print_r($resultObj,true));
     echo $resultJSON;
 ?>
