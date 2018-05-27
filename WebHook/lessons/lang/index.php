@@ -5,6 +5,7 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
         file_put_contents('../../Info/LastIntent.mem', $intentName);  //Output The Lastest Intent Name
+        
     $utterance = $jsonObj['utterance'];
     $intentId = $jsonObj['intentId'];
     $Value_content = "";
@@ -15,10 +16,6 @@
             break;
         }
     }
-    $temp = array(
-        'lang_content' => '0', 
-        'poem_action' => '0'
-    );
 
     // if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'lang_content'){
     //     //$temp['intentParameterName'] = $v['intentParameterName'];
@@ -36,6 +33,7 @@
 
     //file_put_contents('./log.txt', print_r($temp,true));
     $reply = "";
+    $resultType="RESULT";
     $index = "";
     $poem_name = "";
     $article_name = "";
@@ -51,6 +49,7 @@
                 case 1: 
                     $poem_name ="《静夜思》";
                     $poem_author = "李白";
+                    $audioGenieId = "";
                     break;
                 case 2: 
                     $poem_name ="《枫桥夜泊》";
@@ -60,6 +59,7 @@
                 case 3: 
                     $poem_name ="《黄鹤楼》";
                     $poem_author = "崔颢";
+                    $audioGenieId = "";
                     break;
             }
             $reply = "这首诗是".$poem_author."的".$poem_name."，小朋友请跟读";
@@ -70,6 +70,7 @@
                 case 1: 
                     $article_name ="";
                     $poem_author = "";
+                    $audioGenieId = "";
                     break;
                 case 2: 
                     $article_name ="《故乡》";
@@ -79,6 +80,7 @@
                 case 3: 
                     $article_name ="";
                     $article_author = "";
+                    $audioGenieId = "";
                     break;
             }
             $reply = "这篇课文".$article_author."的".$article_name."，小朋友请跟读";
@@ -93,7 +95,7 @@
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
-        $returnValue->resultType= "CONFIRM";
+        $returnValue->resultType= $resultType;
             $actions->name= "audioPlayGenieSource";
                 $properties->audioGenieId= $audioGenieId;
             $actions->properties= $properties;
