@@ -2,24 +2,24 @@
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
 
-    $lastintentName = file_get_contents('../../Info/LastIntent.mem');
-    if($lastintentName === '语文'){
-        //return true;
-    }
-    else{
-        $resultObj->returnCode = "0";
-        $resultObj->returnErrorSolution = "";
-        $resultObj->returnMessage = "";
-        $returnValue->reply= "未定义的前置参数";
-        $returnValue->resultType= "RESULT";
-        $resultValue->executeCode="PARAMS_ERROR";
-        $resultValue->msgInfo="";
-        $resultObj->returnValue=$returnValue;
-        $resultJSON = json_encode($resultObj);
-        echo $resultJSON;
-        //return false;
-        exit(0);
-    }
+    // $lastintentName = file_get_contents('../../Info/LastIntent.mem');
+    // if($lastintentName == "语文"){
+    //     //return true;
+    // }
+    // else{
+    //     $resultObj->returnCode = "0";
+    //     $resultObj->returnErrorSolution = "";
+    //     $resultObj->returnMessage = "";
+    //     $returnValue->reply= "未定义的前置参数";
+    //     $returnValue->resultType= "RESULT";
+    //     $resultValue->executeCode="PARAMS_ERROR";
+    //     $resultValue->msgInfo="";
+    //     $resultObj->returnValue=$returnValue;
+    //     $resultJSON = json_encode($resultObj);
+    //     echo $resultJSON;
+    //     //return false;
+    //     exit(0);
+    // }
 
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
