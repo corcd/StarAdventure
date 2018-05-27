@@ -81,17 +81,11 @@
         //     }
         //     break;
         case "准备判断":
-            foreach($jsonObj['slotEntities'][1] as $k=>$v){
-                if ($v['intentParameterName'] === 'ready_status'){
-                    $Value3 = $v['standardValue'];
-                    break;
-                }
+            if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'poem_test_answer'){
+                $Value2 = $jsonObj['slotEntities'][0]['standardValue'];
             }
-            foreach($jsonObj['slotEntities'][0] as $k=>$v){
-                if ($v['intentParameterName'] === 'poem_test_answer'){
-                    $Value2 = $v['originalValue'];
-                    break;
-                }
+            if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'ready_status'){
+                $Value3 = $jsonObj['slotEntities'][1]['standardValue'];
             }
             if($ready == "false" && $Value2 == "N/A"){
                 if($Value3 == "YES"){
