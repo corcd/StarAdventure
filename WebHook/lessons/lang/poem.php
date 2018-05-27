@@ -81,13 +81,19 @@
         //     }
         //     break;
         case "准备判断":
-            if(!$ready){
-                foreach($jsonObj['slotEntities'][0] as $k=>$v){
-                    if ($v['intentParameterName'] === 'ready_status'){
-                        $Value3 = $v['standardValue'];
-                        break;
-                    }
+            foreach($jsonObj['slotEntities'][0] as $k=>$v){
+                if ($v['intentParameterName'] === 'ready_status'){
+                    $Value3 = $v['standardValue'];
+                    break;
                 }
+            }
+            foreach($jsonObj['slotEntities'][1] as $k=>$v){
+                if ($v['intentParameterName'] === 'poem_test_answer'){
+                    $Value2 = $v['originalValue'];
+                    break;
+                }
+            }
+            if(!$ready && $Value2 == "无"){
                 if($Value3 == "YES"){
                     $ready = "ture";
                     $reply = "请听题：李白的《静夜思》的第一句中，“床前”之后是什么内容，小朋友请填空，说出你的答案";
@@ -99,13 +105,7 @@
                     $resultType = "RESULT";
                 }
             }
-            else{
-                foreach($jsonObj['slotEntities'][1] as $k=>$v){
-                    if ($v['intentParameterName'] === 'poem_test_answer'){
-                        $Value2 = $v['originalValue'];
-                        break;
-                    }
-                }
+            else if($ready && $Value2 != "无"){
                 if($Value2 == "明月光"){
                     $reply = "好棒，恭喜你答对啦！";
                     $resultType = "RESULT";
@@ -113,7 +113,9 @@
                 else{
                     $reply = "好可惜，请再来一遍吧！";
                     $resultType = "ASK_INF";
-                    
+                        $askedInfos->parameterName= "poem_test_answer";
+                        $askedInfos->intentId= $intentId;
+                    $returnValue->askedInfos[0]= $askedInfos;
                 }
             }
             break;
@@ -124,9 +126,6 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= $resultType;
-            $askedInfos->parameterName= "poem_test_answer";
-            $askedInfos->intentId= $intentId;
-        $returnValue->askedInfos[0]= $askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
