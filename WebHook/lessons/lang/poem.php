@@ -63,24 +63,6 @@
         case "古诗词属性":
             
             break;
-        // case "古诗词检测":
-        //     if($ready){
-        //         foreach($jsonObj['slotEntities'] as $k=>$v){
-        //             if ($v['intentParameterName'] === 'poem_test_answer'){
-        //                 $Value2 = $v['standardValue'];
-        //                 break;
-        //             }
-        //         }
-        //         if($Value2 == "明月光"){
-        //             $reply = "好棒，恭喜你答对啦！";
-        //             $resultType = "RESULT";
-        //         }
-        //         else{
-        //             $reply = "好可惜，请再来一遍吧！";
-        //             $resultType = "ASK_INF";
-        //         }
-        //     }
-        //     break;
         case "古诗词检测":
             // foreach($jsonObj['slotEntities'] as $k=>$v){
             //     if ($v['intentParameterName'] === 'poem_test_answer'){

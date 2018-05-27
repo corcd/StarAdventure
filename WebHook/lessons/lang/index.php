@@ -1,4 +1,9 @@
 <?php
+    function randomkeys($pattern){     
+        $key = $pattern{mt_rand(0,strlen($pattern))};
+        return $key;
+    }
+    
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
 
@@ -8,13 +13,22 @@
         
     $utterance = $jsonObj['utterance'];
     $intentId = $jsonObj['intentId'];
+
     $Value_content = "";
-    $Value_action = "";
-    foreach($jsonObj['slotEntities'] as $k=>$v){
-        if ($v['intentParameterName'] === 'lang_content'){
-            $Value_content = $v['standardValue'];
-            break;
-        }
+    $Value_answer = "";
+
+    if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'lang_content'){
+        $Value_content = $jsonObj['slotEntities'][0]['standardValue'];
+    }
+    else if($jsonObj['slotEntities'][0]['intentParameterName'] === 'poem_word_answer'){
+        $Value_answer = $jsonObj['slotEntities'][0]['standardValue'];
+    }
+
+    if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_word_answer'){
+        $Value_answer = $jsonObj['slotEntities'][1]['standardValue'];
+    }
+    else if($jsonObj['slotEntities'][1]['intentParameterName'] === 'lang_content'){
+        $Value_content = $jsonObj['slotEntities'][1]['standardValue'];
     }
 
     // if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'lang_content'){
@@ -35,6 +49,8 @@
     $reply = "";
     $resultType="RESULT";
     $index = "";
+    $sentences= "";
+    $word = "";
     $poem_name = "";
     $article_name = "";
     $poem_author = "";
@@ -50,19 +66,46 @@
                     $poem_name ="《静夜思》";
                     $poem_author = "李白";
                     $audioGenieId = "";
+                    $sentences = "床前明月光疑是地上霜举头望明月低头思故乡";
                     break;
                 case 2: 
                     $poem_name ="《枫桥夜泊》";
                     $poem_author = "张继";
                     $audioGenieId = "4208";
+                    $sentences = "月落乌啼霜满天江枫渔火对愁眠姑苏城外寒山寺夜半钟声到客船";
                     break;
                 case 3: 
                     $poem_name ="《黄鹤楼》";
                     $poem_author = "崔颢";
                     $audioGenieId = "";
+                    $sentences = "";
                     break;
             }
-            $reply = "这首诗是".$poem_author."的".$poem_name."，小朋友请跟读";
+            $word = randomkeys($sentences);
+            if($Value_answer == "N/A"){
+                $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
+                $resultType = "ASK_INF";
+                        $askedInfos->parameterName= "poem_word_answer";
+                        $askedInfos->intentId= $intentId;
+                    $returnValue->askedInfos[0]= $askedInfos;
+            }
+            else if($Value_answer != "N/A"){
+                if($Value_answer == $word){
+                    $reply = "好棒，恭喜你答对啦！";
+                    $resultType = "RESULT";
+                }
+                else{
+                    $reply = "好可惜，请再来一遍吧！";
+                    $resultType = "ASK_INF";
+                        $askedInfos->parameterName= "poem_word_answer";
+                        $askedInfos->intentId= $intentId;
+                    $returnValue->askedInfos[0]= $askedInfos;
+                }
+            }
+            else{
+                $reply = "错误信息,V2:".$Value2.",V3:".$Value3;
+                $resultType = "RESULT";
+            }
             break;
         case "课文": 
             $index = 2;
@@ -94,7 +137,7 @@
     $resultObj->returnCode = "0";
     $resultObj->returnErrorSolution = "";
     $resultObj->returnMessage = "";
-        $returnValue->reply= $intentName.":".$reply;
+        $returnValue->reply= $reply;
         $returnValue->resultType= $resultType;
             $actions->name= "audioPlayGenieSource";
                 $properties->audioGenieId= $audioGenieId;
