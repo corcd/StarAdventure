@@ -24,6 +24,7 @@
     // Parser Aligenie Skill JSON
     $intentName = $jsonObj['intentName'];
     $utterance = $jsonObj['utterance'];
+    $intentId = $jsonObj['intentId'];
 
     $ready = "false";
     $Value1 = "";
@@ -58,11 +59,50 @@
                 $resultType = "CONFIRM";
             }
             break;
-        case "古诗词检测":
-            if($ready){
-                foreach($jsonObj['slotEntities'] as $k=>$v){
+        case "古诗词属性":
+            
+            break;
+        // case "古诗词检测":
+        //     if($ready){
+        //         foreach($jsonObj['slotEntities'] as $k=>$v){
+        //             if ($v['intentParameterName'] === 'poem_test_answer'){
+        //                 $Value2 = $v['standardValue'];
+        //                 break;
+        //             }
+        //         }
+        //         if($Value2 == "明月光"){
+        //             $reply = "好棒，恭喜你答对啦！";
+        //             $resultType = "RESULT";
+        //         }
+        //         else{
+        //             $reply = "好可惜，请再来一遍吧！";
+        //             $resultType = "ASK_INF";
+        //         }
+        //     }
+        //     break;
+        case "准备判断":
+            if(!$ready){
+                foreach($jsonObj['slotEntities'][0] as $k=>$v){
+                    if ($v['intentParameterName'] === 'ready_status'){
+                        $Value3 = $v['standardValue'];
+                        break;
+                    }
+                }
+                if($Value3 == "YES"){
+                    $ready = "ture";
+                    $reply = "请听题：李白的《静夜思》的第一句中，“床前”之后是什么内容，小朋友请填空，说出你的答案";
+                    $resultType = "ASK_INF";
+                }
+                else{
+                    $ready = "false";
+                    $reply = "那等你准备好了，我们再来测验吧";
+                    $resultType = "RESULT";
+                }
+            }
+            else{
+                foreach($jsonObj['slotEntities'][1] as $k=>$v){
                     if ($v['intentParameterName'] === 'poem_test_answer'){
-                        $Value2 = $v['standardValue'];
+                        $Value2 = $v['originalValue'];
                         break;
                     }
                 }
@@ -73,25 +113,8 @@
                 else{
                     $reply = "好可惜，请再来一遍吧！";
                     $resultType = "ASK_INF";
+                    
                 }
-            }
-            break;
-        case "准备判断":
-            foreach($jsonObj['slotEntities'] as $k=>$v){
-                if ($v['intentParameterName'] === 'ready_status'){
-                    $Value3 = $v['standardValue'];
-                    break;
-                }
-            }
-            if($Value3 == "YES"){
-                $ready = "ture";
-                $reply = "请听题：李白的《静夜思》的第一句中，“床前”之后是什么内容，小朋友请填空，说出你的答案";
-                $resultType = "ASK_INF";
-            }
-            else{
-                $ready = "false";
-                $reply = "那等你准备好了，我们再来测验吧";
-                $resultType = "RESULT";
             }
             break;
     }
@@ -101,6 +124,9 @@
     $resultObj->returnMessage = "";
         $returnValue->reply= $reply;
         $returnValue->resultType= $resultType;
+            $askedInfos->parameterName= "poem_test_answer";
+            $askedInfos->intentId= $intentId;
+        $returnValue->askedInfos[0]= $askedInfos;
         $resultValue->executeCode="SUCCESS";
         $resultValue->msgInfo="";
     $resultObj->returnValue=$returnValue;
