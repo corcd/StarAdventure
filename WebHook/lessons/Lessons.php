@@ -1,5 +1,4 @@
 <?php
-    require("../function.php");
     $fl = file_get_contents("php://input");
     //$lastintentName = file_get_contents('../../Info/LastIntent.mem');
     // if($lastintentName === '选择项目'){
