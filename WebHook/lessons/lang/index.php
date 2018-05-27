@@ -1,9 +1,4 @@
-<?php
-    function randomkeys($pattern){     
-        $key = $pattern[mt_rand(0,strlen($pattern))];
-        return $key;
-    }
-    
+<?php   
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
 
@@ -81,8 +76,9 @@
                     $sentences = "";
                     break;
             }
-            //$word = randomkeys($sentences);
-            $word = "枫";
+            $pin = mt_rand(0,strlen($pattern));
+            $word = $sentences[$pin];
+            //$word = "枫";
             file_put_contents("word.mem", $word);
             if($Value_answer == "N/A"){
                 $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
