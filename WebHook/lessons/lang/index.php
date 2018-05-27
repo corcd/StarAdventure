@@ -1,4 +1,9 @@
 <?php   
+    function mb_str_split( $string ) {
+        // /u表示把字符串当作utf-8处理，并把字符串开始和结束之前所有的字符串分割成数组
+        return preg_split('/(?<!^)(?!$)/u', $string ); 
+    }
+
     $fl = file_get_contents("php://input");
     $jsonObj = json_decode($fl, true);
 
@@ -77,11 +82,10 @@
                     break;
             }
             $ret = array();
-            $len = mb_strlen($sentences, "UTF-8");
-            for ($i = 0; $i < $len; $i++) {
-                $ret[] = mb_substr($str, $i, 1, "UTF-8");
+            foreach (mb_str_split($sentences) as $c){
+                $ret[] = $c;
             }
-            $word = $ret[rand(0,$len)];
+            $word = $ret[rand(0,count($ret))];
             //$word = "枫";
             file_put_contents("word.mem", $word);
             if($Value_answer == "N/A"){
