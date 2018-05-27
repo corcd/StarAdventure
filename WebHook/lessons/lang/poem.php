@@ -33,7 +33,7 @@
     $resultType = "";
 
     // Content Nexus
-    switch (intentName) {
+    switch ($intentName) {
         case "诗词具体操作":
             foreach($jsonObj['slotEntities'] as $k=>$v){
                 if ($v['intentParameterName'] === 'poem_action'){
