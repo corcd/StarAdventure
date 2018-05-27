@@ -89,9 +89,8 @@
                 $Value2 = $jsonObj['slotEntities'][1]['standardValue'];
             }
 
-            if($ready == "false" && $Value2 == "N/A"){
+            if($Value2 == "N/A"){
                 if($Value3 == "YES"){
-                    $ready = "ture";
                     $reply = "请听题：李白的《静夜思》的第一句中，“床前”之后是什么内容，小朋友请填空，说出你的答案";
                     $resultType = "ASK_INF";
                         $askedInfos->parameterName= "poem_test_answer";
@@ -99,12 +98,11 @@
                     $returnValue->askedInfos[0]= $askedInfos;
                 }
                 else{
-                    $ready = "false";
                     $reply = "那等你准备好了，我们再来测验吧";
                     $resultType = "RESULT";
                 }
             }
-            else if($ready == "ture"){
+            else if($Value2 != "N/A"){
                 if($Value2 == "明月光"){
                     $reply = "好棒，恭喜你答对啦！";
                     $resultType = "RESULT";
@@ -118,7 +116,7 @@
                 }
             }
             else{
-                $reply = "错误信息,V2:".$Value2.",V3:".$Value3.",ready:".$ready;
+                $reply = "错误信息,V2:".$Value2.",V3:".$Value3;
                 $resultType = "RESULT";
             }
             break;
