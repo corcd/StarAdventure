@@ -76,8 +76,12 @@
                     $sentences = "";
                     break;
             }
-            $pin = rand(0,strlen($sentences));
-            $word = $sentences[0];
+            $ret = array();
+            $len = mb_strlen($sentences, "UTF-8");
+            for ($i = 0; $i < $len; $i++) {
+                $ret[] = mb_substr($str, $i, 1, "UTF-8");
+            }
+            $word = $ret[rand(0,$len)];
             //$word = "枫";
             file_put_contents("word.mem", $word);
             if($Value_answer == "N/A"){
