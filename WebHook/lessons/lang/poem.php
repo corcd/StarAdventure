@@ -83,10 +83,10 @@
         //     break;
         case "准备判断":
             if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'ready_status'){
-                $Value2 = $jsonObj['slotEntities'][0]['standardValue'];
+                $Value3 = $jsonObj['slotEntities'][0]['standardValue'];
             }
             if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_test_answer'){
-                $Value3 = $jsonObj['slotEntities'][1]['standardValue'];
+                $Value2 = $jsonObj['slotEntities'][1]['standardValue'];
             }
 
             if($ready == "false" && $Value2 == "N/A"){
