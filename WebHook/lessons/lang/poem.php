@@ -82,11 +82,24 @@
         //     }
         //     break;
         case "准备判断":
+            // foreach($jsonObj['slotEntities'] as $k=>$v){
+            //     if ($v['intentParameterName'] === 'poem_test_answer'){
+            //         $Value2 = $v['standardValue'];
+            //         break;
+            //     }
+            // }
             if ($jsonObj['slotEntities'][0]['intentParameterName'] === 'ready_status'){
                 $Value3 = $jsonObj['slotEntities'][0]['standardValue'];
             }
+            else if($jsonObj['slotEntities'][0]['intentParameterName'] === 'poem_test_answer'){
+                $Value2 = $jsonObj['slotEntities'][0]['standardValue'];
+            }
+
             if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_test_answer'){
                 $Value2 = $jsonObj['slotEntities'][1]['standardValue'];
+            }
+            else if($jsonObj['slotEntities'][1]['intentParameterName'] === 'ready_status'){
+                $Value3 = $jsonObj['slotEntities'][1]['standardValue'];
             }
 
             if($Value2 == "N/A"){
