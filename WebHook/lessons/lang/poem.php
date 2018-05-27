@@ -78,7 +78,7 @@
             break;
         case "准备判断":
             foreach($jsonObj['slotEntities'] as $k=>$v){
-                if ($v['intentParameterName'] === 'poem_test_answer'){
+                if ($v['intentParameterName'] === 'ready_status'){
                     $Value3 = $v['standardValue'];
                     break;
                 }
