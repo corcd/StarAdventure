@@ -34,7 +34,7 @@
 
     // Content Nexus
     switch ($intentName) {
-        case "诗词具体操作":
+        case "古诗词操作":
             foreach($jsonObj['slotEntities'] as $k=>$v){
                 if ($v['intentParameterName'] === 'poem_action'){
                     $Value1 = $v['standardValue'];
