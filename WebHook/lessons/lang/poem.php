@@ -98,6 +98,9 @@
                     $ready = "ture";
                     $reply = "请听题：李白的《静夜思》的第一句中，“床前”之后是什么内容，小朋友请填空，说出你的答案";
                     $resultType = "ASK_INF";
+                        $askedInfos->parameterName= "poem_test_answer";
+                        $askedInfos->intentId= $intentId;
+                    $returnValue->askedInfos[0]= $askedInfos;
                 }
                 else{
                     $ready = "false";
