@@ -88,6 +88,7 @@
             if ($jsonObj['slotEntities'][1]['intentParameterName'] === 'poem_test_answer'){
                 $Value3 = $jsonObj['slotEntities'][1]['standardValue'];
             }
+
             if($ready == "false" && $Value2 == "N/A"){
                 if($Value3 == "YES"){
                     $ready = "ture";
@@ -103,7 +104,7 @@
                     $resultType = "RESULT";
                 }
             }
-            else if($ready == "ture" && $Value2 != "N/A"){
+            else if($ready == "ture"){
                 if($Value2 == "明月光"){
                     $reply = "好棒，恭喜你答对啦！";
                     $resultType = "RESULT";
@@ -117,7 +118,7 @@
                 }
             }
             else{
-                $reply = "错误信息,V2:".$Value2.",V3:".$Value3;
+                $reply = "错误信息,V2:".$Value2.",V3:".$Value3.",ready:".$ready;
                 $resultType = "RESULT";
             }
             break;
