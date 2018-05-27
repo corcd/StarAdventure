@@ -93,7 +93,7 @@
                     break;
                 }
             }
-            if(!$ready && $Value2 == "无"){
+            if($ready == "false" && $Value2 == "N/A"){
                 if($Value3 == "YES"){
                     $ready = "ture";
                     $reply = "请听题：李白的《静夜思》的第一句中，“床前”之后是什么内容，小朋友请填空，说出你的答案";
@@ -108,7 +108,7 @@
                     $resultType = "RESULT";
                 }
             }
-            else if($ready && $Value2 != "无"){
+            else if($ready == "ture" && $Value2 != "N/A"){
                 if($Value2 == "明月光"){
                     $reply = "好棒，恭喜你答对啦！";
                     $resultType = "RESULT";
@@ -120,6 +120,10 @@
                         $askedInfos->intentId= $intentId;
                     $returnValue->askedInfos[0]= $askedInfos;
                 }
+            }
+            else{
+                $reply = "错误信息";
+                $resultType = "RESULT";
             }
             break;
     }
