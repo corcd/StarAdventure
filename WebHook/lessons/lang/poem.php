@@ -117,7 +117,7 @@
                 }
             }
             else{
-                $reply = "错误信息";
+                $reply = "错误信息,V2:".$Value2.",V3:".$Value3;
                 $resultType = "RESULT";
             }
             break;
