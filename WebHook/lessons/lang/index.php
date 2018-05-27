@@ -82,6 +82,7 @@
                     break;
             }
             $word = randomkeys($sentences);
+            file_put_contents("word.mem", $word);
             //$word = "枫";
             if($Value_answer == "N/A"){
                 $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
@@ -95,6 +96,7 @@
                 $returnValue->askedInfos[0]= $askedInfos;
             }
             else if($Value_answer != "N/A"){
+                $word = file_get_contents("word.mem");
                 if($Value_answer == $word){
                     $reply = "好棒，恭喜你答对啦！";
                     $resultType = "RESULT";
