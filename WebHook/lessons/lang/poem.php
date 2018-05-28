@@ -44,15 +44,11 @@
                 }
             }
             if($Value1 == "介绍"){
-                $reply = "《枫桥夜泊》是唐朝安史之乱后，诗人张继途经寒山寺时，写下的一首羁旅诗。在这首诗中，诗人精确而细腻地讲述了一个客船夜泊者对江南深秋夜景的观察和感受，勾画了月落乌啼、霜天寒夜、江枫渔火、孤舟客子等景象，有景有情有声有色。";
+                $reply = "这首诗的介绍";
                 $resultType = "RESULT";
             }
             else if($Value1 == "解释"){
-                $reply = "这首诗句句形象鲜明，可感可画，句与句之间逻辑关系又非常清晰合理，内容晓畅易解。不仅是中国历代各种唐诗选本和别集选入此诗，连亚洲一些国家的小学课本也曾收录此诗。寒山寺也因此诗的广为传诵而成为游览胜地。";
-                $resultType = "RESULT";
-            }
-            else if($Value1 == "作者"){
-                $reply = "这首诗的作者是张继，字懿孙，是一名唐代诗人.他写过的的最著名的诗，就是《枫桥夜泊》啦。";
+                $reply = "这首诗的解释";
                 $resultType = "RESULT";
             }
             else if($Value1 == "检测"){
@@ -61,7 +57,20 @@
             }
             break;
         case "古诗词属性":
-            
+            foreach($jsonObj['slotEntities'] as $k=>$v){
+                if ($v['intentParameterName'] === 'poem_property'){
+                    $Value_property = $v['standardValue'];
+                    break;
+                }
+            }
+            if($Value_property == "作者"){
+                $reply = "这首诗的作者是唐代诗人李白";
+                $resultType = "RESULT";
+            }
+            else if($Value_property == "朝代"){
+                $reply = "这首诗是五言绝句唐诗";
+                $resultType = "RESULT";
+            }
             break;
         case "古诗词检测":
             // foreach($jsonObj['slotEntities'] as $k=>$v){

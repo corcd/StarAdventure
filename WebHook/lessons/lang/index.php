@@ -59,12 +59,12 @@
     switch ($Value_content) {
         case "古诗": 
             //$index = rand(1,3);
-            $index = 2;
+            $index = 1;
             switch ($index) {
                 case 1: 
                     $poem_name ="《静夜思》";
                     $poem_author = "李白";
-                    $audioGenieId = "";
+                    $audioGenieId = "4455";
                     $sentences = "床前明月光疑是地上霜举头望明月低头思故乡";
                     break;
                 case 2: 
