@@ -85,10 +85,10 @@
                 foreach (mb_str_split($sentences) as $c){
                     $ret[] = $c;
                 }
-                $word = $ret[rand(0,count($ret))];
-                //$word = "枫";
+                //$word = $ret[rand(0,count($ret))];
+                $word = "望";
                 file_put_contents("word.mem", $word);  //外部存储
-                $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读----".$word;
+                $reply = "这首诗是".$poem_author."的".$poem_name."，接下来让我们看看小朋友你认识多少生字吧！请跟我读,".$word;
                 $resultType = "ASK_INF";
                     $actions->name= "audioPlayGenieSource";
                         $properties->audioGenieId= $audioGenieId;
